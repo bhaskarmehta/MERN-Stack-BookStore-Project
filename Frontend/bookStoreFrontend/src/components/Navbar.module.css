@@ -1,0 +1,20 @@
+input{
+    height: 50px;
+    margin-top: 10px;
+}
+
+.bookStore{
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 85%;
+    z-index: 1000; /*It Ensure the navbar stays on top of other content */
+  }
+
+  .scrolled {
+    background-color: rgb(225, 198, 202);
+  }
