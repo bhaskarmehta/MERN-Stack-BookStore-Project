@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './Navbar.module.css';
+import { Link } from 'react-router-dom';
+import Login from './Login';
 
 const Navbar = ()=>{
     const [scrolled,setScrolled]=useState(false);
@@ -23,33 +25,32 @@ const Navbar = ()=>{
     },[scrolled]);
 
 
-
     return (<>
-    {/* <nav className={`navbar navbar-expand-lg ${scrolled ? styles.scrolled : ''}`}></nav> */}
   <nav className={`navbar navbar-expand-lg ${styles.sticky} ${scrolled ? styles.scrolled : ''}`}>
   <div class="container-fluid">
-    <a class={`navbar-brand ${styles.bookStore}`} href="#">BookStore</a>
+    <Link class={`navbar-brand ${styles.bookStore}`} to="bookstore">BookStore</Link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-5">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <Link class="nav-link active" aria-current="page" to="/">Home</Link>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Course</a>
+          <Link class="nav-link active" to="/course">Course</Link>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Contact</a>
+          <Link class="nav-link active" aria-current="page" to="/contact">Contact</Link>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">About</a>
+          <Link class="nav-link active" to="/about">About</Link>
         </li>
       </ul>
       <form class="d-flex" role="search">
-      <input class={`form-control me-2 ${styles.input}`} type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Login</button>
+      <input class={`form-control me-2 ${styles.search_input}`} type="search" placeholder="Search" aria-label="Search"/>
+        <Link class="btn btn-outline-success" onClick={()=>document.getElementById("login_modal").showModal()}>Login</Link>
+        <Login></Login>
       </form>
     </div>
   </div>

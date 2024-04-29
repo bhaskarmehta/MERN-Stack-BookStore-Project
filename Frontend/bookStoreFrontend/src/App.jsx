@@ -1,14 +1,16 @@
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Home from '../src/home/Home';
-import Course from './components/Course';
+import Navbar from './components/Navbar';
+import Login from './components/Login';
+import { Outlet } from 'react-router-dom';
 
 function App() {
 
   return (
     <>
-      <Home></Home>
-      <Course></Course>
+      <Navbar></Navbar>
+      <Outlet></Outlet>
+      
     </>
   )
 }

@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Cards from './Cards';
+import { Link } from 'react-router-dom';
 
 function Course() {
     const filterData  =  list.filter((freeBook)=>freeBook.category!=='Free');
@@ -42,8 +43,25 @@ function Course() {
           }
         ]
       };
+
   return (
     <>
+     <div className={`${styles.margin_to_navbar}`}>
+        <div>
+            <h1>We are delighted to have you <span className={`${styles.span_pink}`}>Here!:)</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus molestiae corrupti voluptate.
+                 Itaque architecto distinctio optio voluptatum omnis obcaecati dolor a voluptatem qui ipsam, 
+                 impedit deserunt quia quas quidem. Cum.</p>
+            <Link to="/">
+                  <button className={`${styles.back_button}`}>Back</button> 
+            </Link>    
+        </div>
+    <Slider {...settings}>
+        {filterData.map((data)=>
+           <Cards data = {data} key={data.id}/>
+        )}
+      </Slider>
+    </div>
     </>
   )
 }

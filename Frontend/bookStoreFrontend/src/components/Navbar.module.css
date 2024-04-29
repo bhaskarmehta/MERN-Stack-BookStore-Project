@@ -1,6 +1,8 @@
-input{
-    height: 50px;
+search_input{
+    height: 40px;
     margin-top: 10px;
+    outline: none;
+
 }
 
 .bookStore{
