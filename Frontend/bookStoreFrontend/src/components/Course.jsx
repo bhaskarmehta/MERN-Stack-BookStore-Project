@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Course.module.css';
-import list from '../../public/list.json';
+// import list from '../../public/list.json';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Cards from './Cards';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Course() {
-    const filterData  =  list.filter((freeBook)=>freeBook.category!=='Free');
+
+   const [book,setBook] = useState([]);
+
+   useEffect(()=>{
+     const getBook = async()=>{
+      try {
+        const res =  await axios.get("http://localhost:4000/book");
+        console.log(res.data);
+        setBook(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+     }
+     getBook();
+   },[])
+    const filterData  =  book.filter((freeBook)=>freeBook.category!=='Free');
     var settings = {
         dots: true,
         infinite: false,
