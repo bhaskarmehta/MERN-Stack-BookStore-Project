@@ -13,7 +13,7 @@ export default function FreeBook() {
     const getFreeBook = async()=>{
      try {
        const res =  await axios.get("http://localhost:4000/book");
-       console.log(res.data);
+      //  console.log(res.data);
        setFreeBook(res.data);
      } catch (error) {
        console.log(error);

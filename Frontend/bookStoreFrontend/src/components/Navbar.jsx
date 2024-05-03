@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import styles from './Navbar.module.css';
 import { Link } from 'react-router-dom';
-import Login from './Login';
+import Logout from './Logout';
+import { useAuth } from '../context/AuthProvider.jsx';
 
 const Navbar = ()=>{
     const [scrolled,setScrolled]=useState(false);
+    const [authUser,setAuthUser] = useAuth();
+    console.log(authUser);
 
     useEffect(()=>{
      const handleScroll = ()=>{
@@ -26,7 +29,26 @@ const Navbar = ()=>{
 
 
     return (<>
-  <nav className={`navbar navbar-expand-lg ${styles.sticky} ${scrolled ? styles.scrolled : ''}`}>
+    <nav className= {`${styles.sticky} ${scrolled ? styles.scrolled : ''}`}>
+    <div className={`${styles.navbar_left}`}>
+        <h1>BookStore</h1>
+    </div>
+    <div className={`${styles.navbar_right}`}>
+        <Link to="/">Home</Link>
+        <Link to="/course">Course</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/about">About</Link>
+        <input type="text" className={`${styles.search_field}`} placeholder="Search"/>
+        {authUser ? (
+        <Logout />
+      ) : (
+        <>
+          <Link to='/login'>Login</Link>
+        </>
+      )}
+       </div>
+</nav>
+  {/* <nav className={`navbar navbar-expand-lg ${styles.sticky} ${scrolled ? styles.scrolled : ''}`}>
   <div class="container-fluid">
     <Link class={`navbar-brand ${styles.bookStore}`} to="bookstore">BookStore</Link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,13 +70,19 @@ const Navbar = ()=>{
         </li>
       </ul>
       <form class="d-flex" role="search">
-      <input class={`form-control me-2 ${styles.search_input}`} type="search" placeholder="Search" aria-label="Search"/>
-        <Link class="btn btn-outline-success" onClick={()=>document.getElementById("login_modal").showModal()}>Login</Link>
-        <Login></Login>
+       <input class={`form-control me-2 ${styles.search_input}`} type="search" placeholder="Search" aria-label="Search"/>
+        {authUser ? (
+        <Logout />
+      ) : (
+        <>
+          <button className="btn btn-outline-success" onClick={() => document.getElementById("login_modal").showModal()}>Login</button>
+          <Login />
+        </>
+      )}
       </form>
     </div>
   </div>
-</nav>
+</nav> */}
     </>)
 }
 
