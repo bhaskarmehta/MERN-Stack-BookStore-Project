@@ -23,7 +23,7 @@ try {
     console.log(error);
 }
 
-// Defining Routes
+// Defining Routes and using middleware
 app.use('/book',bookRoute); // Imported 
 app.use('/user',userRoute); //Imported
 
