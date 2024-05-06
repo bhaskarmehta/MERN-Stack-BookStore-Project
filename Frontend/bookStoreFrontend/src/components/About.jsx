@@ -11,6 +11,7 @@ function About() {
         <li>Hyderabad</li>
         <li>Pune</li>
         <li>Chennai</li>
+        <li>Delhi</li>
         <li>Mumbai</li>
       </ul>
     </>
